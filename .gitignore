@@ -1,0 +1,7 @@
+*.pdf
+*.docx
+.vscode/
+*.class
+*.exe
+OS_Practical/
+*.txt

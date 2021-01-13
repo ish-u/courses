@@ -1,0 +1,3 @@
+LDA 0x00A
+ADD 0x00B
+HLT

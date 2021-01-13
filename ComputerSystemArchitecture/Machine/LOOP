@@ -1,0 +1,15 @@
+;LOOP 
+
+LDA 0x00D
+ADD 0x00B
+ISZ 0x00A
+BUN 0x001
+STA 0x00C
+HLT
+
+; 0x00D can be equal to zero or any other value 
+; 0x00A is the test condition we usually test in a loop 
+; like "for" loop {test condition}
+; the loop runs till 0x00A is not equal to zero
+; when 0x00A == 0 then the BUN instruction is skipped and
+; value of AC is stored at 0x00C 

@@ -1,0 +1,21 @@
+LDA 0x00B
+CMA
+INC
+ADD 0x00A
+STA 0x00C
+HLT
+
+
+; if operand at 0x00B is a positive number then an overflow
+;ouucrs and hlt-bit is set to 1 ,thus stoppping the execution
+
+
+;if the operand at 0x00B is negative then the program runs 
+;till the end and the value of AC is stored at 0x00C
+
+; if operand at 0x00A is a neagtive number then an overflow
+;ouucrs and hlt-bit is set to 1 ,thus stoppping the execution
+
+; if operand at 0x00B and 0x00A is a positive or 
+; negative  number then an overflow
+;ouucrs and hlt-bit is set to 1 ,thus stoppping the execution
