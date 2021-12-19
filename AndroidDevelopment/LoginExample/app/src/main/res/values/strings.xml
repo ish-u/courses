@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LoginExample</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">LOGIN</string>
+    <string name="USERNAME">USER</string>
+    <string name="PASSWORD">PASSWORD</string>
+    <string name="logout">LOG OUT</string>
+    <string name="dialog_message">Do You Want to Log Out ?</string>
+    <string name="dialog_title">LOGOUT</string>
+    <string name="OK">OK</string>
+    <string name="CANCEL">CANCEL</string>
+</resources>

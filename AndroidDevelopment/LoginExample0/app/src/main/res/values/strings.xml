@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LoginExample0</string>
+    <string name="login">LOGIN</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="USERNAME">USER</string>
+    <string name="PASSWORD">PASSWORD</string>
+    <string name="dialog_message">Welcome :)</string>
+    <string name="dialog_title">SUCCESSFUL LOGIN</string>
+</resources>

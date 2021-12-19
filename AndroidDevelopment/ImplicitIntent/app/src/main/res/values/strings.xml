@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImplicitIntent</string>
+    <string name="message">Message..</string>
+    <string name="button">SEND</string>
+</resources>

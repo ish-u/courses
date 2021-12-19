@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Activity Lifecycle</string>
+    <string name="description">An App that Logs during Phases of an Activity Lifecycle</string>
+</resources>
