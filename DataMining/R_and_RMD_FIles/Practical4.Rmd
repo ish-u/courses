@@ -1,0 +1,37 @@
+---
+title: "Practical 4"
+output: html_notebook
+---
+
+```{r}
+library(arules)
+library(arulesViz)
+```
+
+### Groceries Data Set
+```{r}
+data("Groceries")
+summary(Groceries)
+```
+```{r}
+inspect(Groceries[1:5])
+```
+
+```{r}
+rules.all <- apriori(Groceries, parameter = list(supp = 0.05, conf = 0.070,target="rules"))
+```
+
+```{r}
+inspect(head(rules.all))
+```
+
+
+```{r}
+plot(rules.all)
+```
+
+
+```{r}
+plot(rules.all, method="grouped")
+```
+

@@ -1,0 +1,82 @@
+---
+title: "Practical 6 - k-Means"
+output: html_notebook
+---
+
+## K-Means Clustering
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caret)
+library(cluster)
+library(ggplot2)
+```
+
+```{r}
+data(iris)
+head(iris)
+```
+```{r}
+summary(iris)
+```
+
+
+### Removing the Species Columns as we don't need it in Hirerachal Clustering
+```{r}
+irisForKmeans <- iris[-5]
+head(irisForKmeans)
+```
+
+### Elbow Technique to find Optimal Number of Clusters
+```{r}
+totalSSE <- c(1:20)
+numberOfClusters <- c(1:20)
+for(i in 1:20)
+{
+  totalSSE[i] <-sum(kmeans(irisForKmeans,centers=i+2)$withinss)
+  numberOfClusters[i] <- i+2
+  
+}
+clusterSSE <- data.frame(
+  numberOfClusters = numberOfClusters,
+  totalSSE = totalSSE
+)
+plot(clusterSSE,type="b")
+```
+
+
+```{r}
+model <- kmeans(irisForKmeans,3)
+model
+```
+### Adding the Cluster Number back to the Original iris dataset
+
+```{r}
+irisForKmeans$cluster <- factor(model$cluster)  
+head(irisForKmeans)
+```
+
+
+```{r}
+centers <- data.frame(cluster=factor(1:3), model$centers)
+centers
+```
+
+
+```{r}
+ggplot(data=irisForKmeans[c(1,2,5)], aes(x=Sepal.Length, y=Sepal.Width, color=cluster, shape=cluster)) +
+geom_point(alpha=.3) +
+geom_point(data=centers, aes(x=Sepal.Length, y=Sepal.Width), size=3, stroke=2)
+```
+
+
+```{r}
+ggplot(data=irisForKmeans[c(3,4,5)], aes(x=Petal.Length, y=Petal.Width, color=cluster, shape=cluster)) +
+geom_point(alpha=.3)+
+geom_point(data=centers, aes(x=Petal.Length, y=Petal.Width), size=3, stroke=2)
+```
+
+
+
+

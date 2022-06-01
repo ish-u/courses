@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80");
+}
+
+#form {
+  display: grid;
+  grid-template-columns: 15vw 25vw;
+  margin: 0 auto;
+  width: 40vw;
+}
+#form label,
+input {
+  margin: 10px;
+  height: 3vh;
+  padding: 15px;
+  font-size: large;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+#form input {
+  border-radius: 2.5px;
+  border: 1px solid black;
+}
+
+#form button {
+  margin-top: 20px;
+  height: 5vh;
+  font-size: medium;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: rgba(255, 127, 80, 0.75);
+  border-radius: 5px;
+}
+
+#form button:hover {
+  background-color: coral;
+  cursor: pointer;
+}

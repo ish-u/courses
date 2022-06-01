@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "MS";
+  src: url("./static/MS Sans Serif 8pt.ttf") format("truetype");
+}
+html {
+  font-family: MS;
+  background-color: #008080;
+}
+
+.container {
+  background-color: white;
+  width: 50vw;
+  height: 70vh;
+  border-style: solid;
+  border-color: #b5b3b3;
+  border-width: 0px 5px 5px 5px;
+  color: black;
+  box-shadow: inset 2px 2px 2px black, 2px 2px 2px black, -1px -1px 1px white;
+  margin: 0 auto;
+  margin-top: 10vh;
+  line-height: 1.5rem;
+}
+
+.title-container {
+  position: relative;
+  background-color: #b5b3b3;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: inherit;
+  box-shadow: 0px 2px #000;
+}
+
+.title {
+  background: linear-gradient(to right, #0000aa, #0000aa88);
+  width: inherit;
+  color: white;
+  height: inherit;
+}
+.title span {
+  padding-left: 5px;
+}
+
+.close {
+  position: absolute;
+  right: 2%;
+  height: inherit;
+  background-color: #b5b3b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 15px;
+  height: 15px;
+  margin-top: 4px;
+  box-shadow: 1.5px 1.5px 2px #000, -0.5px -0.5px 1px white;
+}
+.content {
+  padding: 10px;
+  height: 62.5vh;
+  overflow-y: scroll;
+}
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #b5b3b3;
+  width: 100vw;
+  border-top: white solid 1px;
+  padding-bottom: 2px;
+}
+
+.start-button {
+  width: 5vw;
+}
+
+.taskbar .button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 5px 10px;
+  margin: 2.5px 3px;
+  width: 10vw;
+  box-shadow: 2px 2px black, inset 1px 1px white;
+}
+.button img {
+  height: 22px;
+  width: 22px;
+  margin-right: 5px;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 2px 2px black, 1px 1px white !important;
+}
+
+#clock {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  width: 7vw;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: inset 2px 2px black, 1px 1px 2px white;
+}
+
+.hide {
+  display: none;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  margin-left: 5px;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 10px;
+}
+.social a {
+  text-decoration: none;
+  color: white;
+}
+.social-link img {
+  height: 32px;
+  width: 32px;
+}
+.social-link span {
+  font-size: small;
+  margin-top: 10px;
+}

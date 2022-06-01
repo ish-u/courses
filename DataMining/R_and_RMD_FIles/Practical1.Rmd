@@ -1,0 +1,160 @@
+---
+title: "Practical 1"
+output: html_notebook
+---
+### Reading people.txt
+
+```{r}
+peopleFile <- read.delim("D:/Data Mining/Practicals/people.txt", sep = " ")
+peopleFile
+```
+```{r}
+totalRows <- nrow(peopleFile)
+```
+
+### Applying the Rule Set E that contains the following condition to people.txt
+
+```{r}
+library(sqldf)
+library(editrules)
+```
+
+
+```{r}
+E <- editset(expression(
+      age > 0,
+      age < 150,
+      age > yearsmarried,
+      status %in% c('single','married','widowed'),
+      if(age <= 18) agegroup %in% c('child'),
+      if(age > 18 && age < 65 ) agegroup %in% c('adult'),
+      if(age >= 65) agegroup %in% c('elderly')
+  ))
+```
+
+```{r}
+E
+```
+```{r}
+sm <- violatedEdits(E,peopleFile)
+```
+
+```{r}
+summary(sm)
+```
+```{r}
+plot(sm)
+```
+
+### Using sqldf package to apply rules to the 
+
+```{r}
+query1 <- "
+          SELECT
+            AGE,
+            AGEGROUP,
+            HEIGHT,
+            STATUS,
+            YEARSMARRIED
+          FROM
+            peopleFile
+          WHERE
+            AGE > 0 AND AGE < 150
+"
+sqldf(query1)
+rule1Voilated <- totalRows - nrow(sqldf(query1))
+```
+
+```{r}
+query2 <- "
+          SELECT
+            AGE,
+            AGEGROUP,
+            HEIGHT,
+            STATUS,
+            YEARSMARRIED
+          FROM 
+            peopleFile
+          WHERE
+            AGE > YEARSMARRIED
+"
+sqldf(query2)
+rule2Voilated <- totalRows - nrow(sqldf(query2))
+```
+
+```{r}
+query3 <- "
+         SELECT
+            AGE,
+            AGEGROUP,
+            HEIGHT,
+            STATUS,
+            YEARSMARRIED
+          FROM 
+            peopleFile
+          WHERE
+            STATUS = 'single' OR STATUS = 'married' OR STATUS = 'widowed'
+"
+sqldf(query3)
+rule3Voilated <- totalRows - nrow(sqldf(query3))
+```
+
+```{r}
+query4 <-"
+        SELECT
+          AGE,
+          AGEGROUP,
+          HEIGHT,
+          STATUS,
+          YEARSMARRIED
+        FROM
+          peopleFile
+        WHERE
+          (AGE < 18 AND AGEGROUP = 'child') OR
+          (AGE > 18 AND AGE < 65 AND AGEGROUP = 'adult') OR
+          (AGE > 65 AND AGEGROUP = 'elderly')
+"
+sqldf(query4)
+rule4Voilated <- totalRows - nrow(sqldf(query4))
+```
+
+### Applying all rules
+
+```{r}
+query <- "
+        SELECT
+          AGE,
+          AGEGROUP,
+          HEIGHT,
+          STATUS,
+          YEARSMARRIED
+        FROM
+          peopleFile
+        WHERE
+          (AGE > 0 AND AGE < 150) AND
+          (AGE > YEARSMARRIED) AND
+          (STATUS = 'single' OR STATUS = 'married' OR STATUS = 'widowed') AND
+          ((AGE < 18 AND AGEGROUP = 'child') OR
+          (AGE > 18 AND AGE < 65 AND AGEGROUP = 'adult') OR
+          (AGE > 65 AND AGEGROUP = 'elderly'))
+"
+sqldf(query)
+```
+
+```{r}
+cat("Rule Set Voilations Summary \n",
+    "RuleSet 1 :",rule1Voilated,"\n",
+    "RuleSet 2 :",rule2Voilated,"\n",
+    "RuleSet 3 :",rule3Voilated,"\n",
+    "RuleSet 4 :",rule4Voilated,"\n")
+```
+
+
+```{r}
+totalVoilations <- as.integer(c(rule1Voilated,rule2Voilated,rule3Voilated,rule4Voilated))
+plot(totalVoilations,xlab = "Rule",ylab = "Number of Times Violated")
+barplot(totalVoilations,xlab="Rules",ylab = "Number of Times Violated",names.arg = c("Rule1","Rule 2","Rule 3","Rule 4"))
+```
+
+
+

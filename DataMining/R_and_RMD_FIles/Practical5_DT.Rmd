@@ -1,0 +1,262 @@
+---
+title: "Practical 5 - DT"
+output: html_notebook
+---
+
+
+```{r}
+library(klaR)
+library(e1071)
+library(rpart)
+library(rpart.plot)
+library(caret)
+library("reshape2")
+```
+
+## Hold Out Method
+### 75-25
+
+```{r}
+trainIndex <- createDataPartition(iris$Species, p=0.75, list=FALSE)
+```
+
+
+```{r}
+irisTrain <- iris[ trainIndex,]
+head(irisTrain)
+```
+
+```{r}
+irisTest  <- iris[-trainIndex,]
+head(irisTest)
+```
+
+
+```{r}
+dt <- rpart(Species~.,data=irisTrain,method='class')
+dt
+```
+```{r}
+rpart.plot(dt)
+```
+
+```{r}
+predictions <- predict(dt, irisTest,type="class")
+predictions
+```
+```{r}
+confusionMatrix(predictions, irisTest$Species)
+```
+
+```{r}
+cm <- confusionMatrix(predictions, irisTest$Species)$table
+iris_melt <- melt(cm)
+```
+
+
+```{r}
+ggplot(iris_melt, aes(x = Prediction,
+                      y = Reference,
+                      fill = value)) +
+geom_tile()
+```
+
+```{r}
+accuracy75<-((sum(diag(cm)))/sum(cm))*100
+accuracy75
+```
+
+### 66-33
+
+```{r}
+trainIndex <- createDataPartition(iris$Species, p=0.66, list=FALSE)
+```
+
+
+```{r}
+irisTrain <- iris[ trainIndex,]
+head(irisTrain)
+```
+
+```{r}
+irisTest  <- iris[-trainIndex,]
+head(irisTest)
+```
+
+
+```{r}
+dt <- rpart(Species~.,data=irisTrain,method='class')
+dt
+```
+```{r}
+rpart.plot(dt)
+```
+
+```{r}
+predictions <- predict(dt, irisTest,type='class')
+predictions
+```
+
+
+```{r}
+confusionMatrix(predictions, irisTest$Species)
+```
+
+```{r}
+cm <- confusionMatrix(predictions, irisTest$Species)$table
+iris_melt <- melt(cm)
+iris_melt
+```
+
+```{r}
+ggplot(iris_melt, aes(x = Prediction,
+                  y = Reference,
+                  fill = value))+geom_tile()
+```
+
+```{r}
+accuracy66<-((sum(diag(cm)))/sum(cm))*100
+accuracy66
+```
+
+
+## Cross Validation
+
+```{r}
+dtCV = train(Species~.,iris,
+                       method = 'J48',
+                       trControl=trainControl(method='cv',number = 10))
+```
+
+
+```{r}
+dtCV
+```
+
+```{r}
+predictions <- predict(dtCV, iris)
+predictions
+```
+```{r}
+plot(dtCV$finalModel)
+```
+
+```{r}
+confusionMatrix(predictions, iris$Species)
+```
+
+```{r}
+cm <- confusionMatrix(predictions, iris$Species)$table
+iris_melt <- melt(cm)
+```
+
+```{r}
+ggplot(iris_melt, aes(x = Prediction,
+                  y = Reference,
+                  fill = value))+geom_tile()
+```
+
+```{r}
+accuracyCV<-((sum(diag(cm)))/sum(cm))*100
+accuracyCV
+```
+
+## Random Subsampling
+
+```{r}
+dtRS = train(Species~.,iris,
+                       method = 'J48',
+                       trControl=trainControl(method='boot',number = 60))
+```
+
+
+```{r}
+dtRS
+```
+```{r}
+plot(dtRS$finalModel)
+```
+
+```{r}
+predictions <- predict(dtRS, iris)
+predictions
+```
+```{r}
+confusionMatrix(predictions, iris$Species)
+```
+
+```{r}
+cm <- confusionMatrix(predictions, iris$Species)$table
+iris_melt <- melt(cm)
+```
+
+```{r}
+ggplot(iris_melt, aes(x = Prediction,
+                      y = Reference,
+                      fill = value)) + 
+geom_tile()
+```
+
+```{r}
+accuracyRS<-((sum(diag(cm)))/sum(cm))*100
+accuracyRS
+```
+
+
+
+## Standardized Classifier
+```{r}
+standardize = function(x) {
+  z <- (x - mean(x)) / sd(x)
+  return( z)
+}
+
+iris[-c(5)] <- apply(iris[-c(5)], 2, standardize)
+head(iris)
+```
+
+
+```{r}
+dtStandard = train(Species~.,iris,
+                       method = 'J48')
+dtStandard
+```
+```{r}
+plot(dtStandard$finalModel)
+```
+
+
+```{r}
+predictions <- predict(dtRS, iris)
+predictions
+```
+
+```{r}
+cm <- confusionMatrix(predictions, iris$Species)$table
+cm
+iris_melt <- melt(cm)
+```
+
+```{r}
+ggplot(iris_melt, aes(x = Prediction,
+                  y = Reference,
+                  fill = value))+geom_tile()
+```
+
+```{r}
+accuracyStandard<-((sum(diag(cm)))/sum(cm))*100
+accuracyStandard
+```
+## Comparing
+```{r}
+df <- data.frame(
+  X = c('accuracy75','accuracy66','accuracyCV','accuracyRS','accuracyStd'),
+  Y = c(accuracy75,accuracy66,accuracyCV,accuracyRS,accuracyStandard)
+)
+df
+```
+
+
+```{r}
+barplot(df$Y, names.arg = df$X)
+```

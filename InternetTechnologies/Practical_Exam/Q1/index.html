@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
+    <title>Book Form</title>
+  </head>
+  <body>
+    <div style="display: flex; justify-content: center; width: 100%;"">
+      <h1>Book Form</h1>
+    </div>
+    <form id="form" onsubmit="event.preventDefault(); logData(event)">
+      <!-- name -->
+      <label for="book_name">Book's Name:</label>
+      <input
+        type="text"
+        name="book_name"
+        id="book_name"
+        placeholder="Eg: War and Peace"
+        required
+      />
+
+      <!-- author -->
+      <label for="author_name">Book's Author</label>
+      <input
+        type="text"
+        name="author_name"
+        id="author_name"
+        placeholder="Eg: Leo Tolstoy"
+        required
+      />
+
+      <!-- price -->
+      <label for="book_price">Book's Price:</label>
+      <input
+        type="number"
+        name="book_price"
+        id="book_price"
+        placeholder="Eg: $ 15"'
+        required
+      />
+
+      <!-- publisher -->
+      <label for="book_publisher">Book's Publisher</label>
+      <input
+        type="text"
+        name="book_publisher"
+        id="book_publisher"
+        placeholder="Eg. Penguin Publishers"
+        required
+      />
+
+      <!-- likes -->
+      <label for="book_category">Book's Category</label>
+      <input
+        type="text"
+        name="book_category"
+        id="book_category"
+        placeholder="Eg. Horror, Thriller, Romance"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

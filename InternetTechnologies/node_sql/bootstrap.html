@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bootstrap</title>
+  </head>
+  <body>
+    <script>
+      $(function () {
+        var list = document.getElementById("list");
+        console.log(list.innerText);
+        var i = function (l, b, h) {
+          return l * b * h;
+        };
+        $("#form").on("submit", function (e) {
+          e.preventDefault();
+          var fname = $("#fname").val();
+          var f = {
+            name: fname,
+          };
+          console.log("obj", f);
+          console.log("so", JSON.stringify(f));
+          (function () {
+            document.getElementById("volume").innerHTML = i(1, 2, 3);
+          })();
+          console.log();
+          $.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            $("#form").first().serialize()
+          ).done((data) => {
+            console.log(data);
+            $("#inline-form").html(`<code>${JSON.stringify(data)}</code>`);
+          });
+        });
+
+        // object constructor notation to create multiple objects
+        function clickEvent(posX, posY, time) {
+          this.posX = posX;
+          this.posY = posY;
+          this.time = time;
+        }
+
+        $("button.btn-lg.btn-danger").on("click", function (e) {
+          var $col = $("<div>");
+          $col.addClass("col-sm-4 col-md-4 col-lg-4 col-xl-4");
+          var $code = $("<code>");
+          $code.attr("lang", "json");
+          $code.html(
+            JSON.stringify(
+              new clickEvent(e.screenX, e.screenY, new Date().getTime())
+            )
+          );
+          $col.html($code);
+          $("button.btn-lg.btn-danger")
+            .siblings("div.row")
+            .first()
+            .append($col);
+        });
+        $("body>div:first[id!='ghostery-tracker-tally']").html($("<ul>"));
+        var $li = $("<li>");
+        $li.html("xd");
+        $li.addClass("xd");
+        $("body > div > ul").append($li);
+        $("li[class='xd']").after($("<li>LOL</li>"));
+        $("li[class='xd']").before($("<li>LMAO</li>"));
+        $("li[class='xd']").html($("<em>ahahahahah</em>"));
+      });
+    </script>
+    <ul id="list">
+      <li style="display: none">a</li>
+      <li>b</li>
+    </ul>
+    <div class="container" style="text-align: center; margin-top: 20px">
+      <div class="row"></div>
+      <button class="btn btn-danger btn-lg">Click</button>
+    </div>
+    <div class="container" style="margin: 20px">
+      <form action="" id="form">
+        <div class="form-group">
+          <label for="fname">First Name :</label>
+          <input type="color" name="fname" id="fname" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name :</label>
+          <input type="text" name="lname" id="lname" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password :</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="textarea">Thoughts</label>
+          <textarea
+            name="textarea"
+            id="textarea"
+            cols="10"
+            rows="4"
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label
+              ><input
+                type="checkbox"
+                name="feeling"
+                id="feeling1"
+              />Sleep</label
+            >
+          </div>
+          <div class="checkbox">
+            <label
+              ><input type="checkbox" name="feeling" id="feeling2" />More
+              Sleep</label
+            >
+          </div>
+          <div class="checkbox">
+            <label
+              ><input type="checkbox" name="feeling" id="feeling3" />Sleep Sleep
+              Sleep</label
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-inline"
+            ><input type="checkbox" value="" />...</label
+          >
+          <label class="checkbox-inline"
+            ><input type="checkbox" value="" />:::</label
+          >
+          <label class="checkbox-inline"
+            ><input type="checkbox" value="" />,,,</label
+          >
+        </div>
+
+        <div class="form-group">
+          <div class="radio">
+            <label>
+              <input type="radio" name="feeling" id="feeling12" />
+              :)
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="feeling" id="feeling22" />:|
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="feeling" id="feeling32" />:(
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Select Gender</label>
+          <select name="gender" id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"
+              ><i class="glyphicon glyphicon-user"></i
+            ></span>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="username"
+              class="form-control"
+            />
+          </div>
+          <span class="help-block">
+            enter something that you won't regret
+          </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!-- inline form -->
+    <div class="container" style="margin: 20px" id="inline-form">
+      <form action="" class="form-inline">
+        <div class="form-group">
+          <label for="fname">First Name :</label>
+          <input type="text" name="fname2" id="fname2" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name :</label>
+          <input type="text" name="lname2" id="lname3" class="form-control" />
+        </div>
+        <div class="form-group"></div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!-- horizontal form -->
+    <div class="container" style="padding: 20px">
+      <form action="" class="form-horizontal">
+        <div class="form-group">
+          <label for="fname" class="control-label">First Name :</label>
+          <input type="text" name="fname3" id="fname3" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="lname" class="control-label">Last Name :</label>
+          <input type="text" name="lname3" id="lname2" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!-- Container -->
+    <div class="container">
+      <h1>Container Demo</h1>
+      <h6>Setting the Height to be 100px</h6>
+    </div>
+    <div>
+      <div
+        class="container"
+        style="height: 100px; background-color: lightskyblue"
+      >
+        <h3>container</h3>
+      </div>
+      <br />
+      <br />
+      <div
+        class="container-fluid"
+        style="height: 100px; background-color: lightskyblue"
+      >
+        <h3>container-fluid</h3>
+      </div>
+    </div>
+
+    <br />
+    <!-- Grid System -->
+    <div class="container">
+      <h1>Grid Basics</h1>
+      <h6>used 1px white border to seperate columns</h6>
+    </div>
+    <div>
+      <div class="container" style="height: 100px; color: white">
+        <div class="row">
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+          <div
+            class="col-sm-1 col-md-1 col-lg-1 col-xl-1"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-1
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+          <div
+            class="col-sm-2 col-md-2 col-lg-2 col-xl-2"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-2
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-sm-3 col-md-3 col-lg-3 col-xl-3"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-3
+          </div>
+          <div
+            class="col-sm-3 col-md-3 col-lg-3 col-xl-3"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-3
+          </div>
+          <div
+            class="col-sm-3 col-md-3 col-lg-3 col-xl-3"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-3
+          </div>
+          <div
+            class="col-sm-3 col-md-3 col-lg-3 col-xl-3"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-3
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-4 col-md-4 col-lg-4 col-xl-4"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-4
+          </div>
+          <div
+            class="col-sm-4 col-md-4 col-lg-4 col-xl-4"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-4
+          </div>
+
+          <div
+            class="col-sm-4 col-md-4 col-lg-4 col-xl-4"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-4
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-6 col-md-6 col-lg-6 col-xl-6"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-6
+          </div>
+          <div
+            class="col-sm-6 col-md-6 col-lg-6 col-xl-6"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-6
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-12 col-md-12 col-lg-12 col-xl-12"
+            style="background-color: salmon; border: 1px white solid"
+          >
+            col-12
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <!-- Typography -->
+    <div style="text-align: left" class="container">
+      <h1>Typography - h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+      <h5>h5</h5>
+      <h6>h6</h6>
+
+      <h3>
+        Primary Heading -
+        <small
+          >small element are used to create lighter Secondary Heading
+        </small>
+      </h3>
+      <h3>mark element is used to<mark>highlight</mark> text</h3>
+      <h3>
+        <abbr a title="abbreviation tag">abbr</abbr>
+      </h3>
+      <b> blockquote </b>
+
+      <blockquote>
+        <p>
+          The Coziness of relationship makes it so easy to forget the piercing
+          sensation of Solitude
+        </p>
+        <footer>sisyphus55</footer>
+      </blockquote>
+
+      <code lang="js">
+        // code block
+        <br />
+        var jsonObject = "employee":{"name":"John", "age":30, "city":"New York"}
+      </code>
+
+      <br />
+      <br />
+      <b>kbd</b>
+      <br />
+      <kbd>ctrl+z</kbd>
+    </div>
+
+    <!-- Table -->
+    <br />
+    <br />
+    <div class="container">
+      <h1>Tables</h1>
+      <h3>Classic Table</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Stripped Table</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Bordeed Table</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Hover Table</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Condensed Table</h3>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <br />
+    <br />
+    <div class="container">
+      <h3>Images</h3>
+      <h5>Rounded</h5>
+      <img
+        src="https://static.boredpanda.com/blog/wp-content/uploads/2017/12/funny-weird-wtf-stock-photos-7-5a391ad5a43f9__700.jpg"
+        alt="funny stock image"
+        class="img-rounded"
+        width="360"
+      />
+      <br />
+      <h5>Circle</h5>
+      <img
+        src="https://static.boredpanda.com/blog/wp-content/uploads/2017/12/funny-weird-wtf-stock-photos-7-5a391ad5a43f9__700.jpg"
+        alt="funny stock image"
+        class="img-circle"
+        width="360"
+      />
+      <br />
+      <h5>Thumbnail</h5>
+      <img
+        src="https://static.boredpanda.com/blog/wp-content/uploads/2017/12/funny-weird-wtf-stock-photos-7-5a391ad5a43f9__700.jpg"
+        alt="funny stock image"
+        class="img-thumbnail"
+        width="360"
+      />
+      <br />
+    </div>
+
+    <br /><br />
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Jumbotron</h1>
+        <h4>
+          We add this when we really want to attention at this particular place
+          like a 5yr old
+        </h4>
+      </div>
+
+      <br />
+      <div class="page-header">
+        <h1>
+          This is a Page Header.
+          <br />
+          There is a line next to this text to indeicate that this is a heading
+        </h1>
+      </div>
+
+      <!-- wells -->
+      <div class="well">
+        <b>
+          <p>
+            <em> well </em>
+            class add rounded corner to element with grey background
+          </p>
+        </b>
+      </div>
+    </div>
+    <br />
+
+    <!-- alerts -->
+    <div class="container">
+      <h3>Alerts</h3>
+      <div class="alert alert-danger">Danger Alert</div>
+      <div class="alert alert-success">Success Alert</div>
+      <div class="alert alert-info">Info Alert</div>
+      <div class="alert alert-success">Primary Alert</div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="container"">
+    <h3>Buttons</h3>
+    <button class="btn">Basic Button</button>
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-success">Success Button</button>
+    <button class="btn btn-info">Info Button</button>
+    <button class="btn btn-warning">Warning Button</button>
+    <button class="btn btn-danger">Danger Button</button>
+    <button class="btn btn-link">Link Button</button>
+    <br />
+    <h3>Button Group</h3>
+    <div class="btn-group">
+      <button class="btn btn-warning">Warning Button</button>
+      <button class="btn btn-warning">Warning Button</button>
+      <button class="btn btn-warning">Warning Button</button>
+    </div>
+
+    <br /><br />
+
+    <div class="container">
+      <h5>Badges</h5>
+      <a href="">Notification <span class="badge">500+</span></a>
+
+      <h5>Progress Bar</h5>
+      <div class="progress">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        ></div>
+      </div>
+      <div class="progress">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        >
+          70%
+        </div>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-success"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        >
+          70%
+        </div>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-danger"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        >
+          70%
+        </div>
+      </div>
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-success progress-bar-striped"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        >
+          70%
+        </div>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-danger progress-bar-striped"
+          role="progressbar"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 70%"
+        >
+          70%
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>Paganation</h3>
+      <ul class="pagination">
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

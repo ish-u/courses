@@ -1,0 +1,14 @@
+#form {
+  display: grid;
+  grid-template-columns: 10vw 20vw;
+  margin: 0 auto;
+  width: 30vw;
+}
+#form label,
+input {
+  margin: 10px;
+}
+
+#form button {
+  margin-top: 20px;
+}

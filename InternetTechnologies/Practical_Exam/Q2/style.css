@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.menu-container {
+  display: flex;
+}
+
+.menu-container div {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 25px;
+  border: none;
+  border-radius: 5px;
+  height: 50vh;
+  background-color: rgba(255, 127, 80, 0.75);
+}
+
+.menu-container h2 {
+  font-size: xx-large;
+}
+
+.menu-container ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.menu-container li {
+  margin: 20px;
+  font-size: large;
+}
+
+#switch {
+  height: 5vh;
+  width: 10vw;
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+}
+
+.veg-button {
+  background-color: rgba(0, 128, 0, 0.5);
+}
+
+.non-veg-button {
+  background-color: rgba(255, 0, 0, 0.5);
+}

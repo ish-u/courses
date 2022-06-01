@@ -1,0 +1,318 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{R Notebook}
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R Notebook},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{peoplefile }\OtherTok{\textless{}{-}} \FunctionTok{read.delim}\NormalTok{(}\StringTok{"D:/Data Mining/Practicals/people.txt"}\NormalTok{,}\AttributeTok{sep=}\StringTok{" "}\NormalTok{)}
+\NormalTok{peoplefile}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Age agegroup height  status yearsmarried
+## 1  21    adult    6.0  single           -1
+## 2   2    child    3.0 married            0
+## 3  18    adult    5.7 married           20
+## 4 221  elderly    5.0 widowed            2
+## 5  34    child   -7.0 married            3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sqldf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: gsubfn
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: proto
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: RSQLite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{totalRows }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(peoplefile)}
+\FunctionTok{paste}\NormalTok{(totalRows)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "5"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{query1 }\OtherTok{\textless{}{-}} \StringTok{"SELECT}
+\StringTok{                            AGE,}
+\StringTok{                            AGEGROUP,}
+\StringTok{                            HEIGHT,}
+\StringTok{                            STATUS,}
+\StringTok{                            YEARSMARRIED}
+\StringTok{                        FROM}
+\StringTok{                            peoplefile}
+\StringTok{                        WHERE}
+\StringTok{                            AGE \textgreater{}=0 AND AGE \textless{}=150"}
+\FunctionTok{sqldf}\NormalTok{(query1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Age agegroup height  status yearsmarried
+## 1  21    adult    6.0  single           -1
+## 2   2    child    3.0 married            0
+## 3  18    adult    5.7 married           20
+## 4  34    child   -7.0 married            3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rule1Voilated }\OtherTok{\textless{}{-}}\NormalTok{ totalRows }\SpecialCharTok{{-}} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{sqldf}\NormalTok{(query1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#RULE SET 2}
+\NormalTok{query2 }\OtherTok{\textless{}{-}} \StringTok{"SELECT}
+\StringTok{                    AGE,}
+\StringTok{                    AGEGROUP,}
+\StringTok{                    HEIGHT,}
+\StringTok{                    STATUS,}
+\StringTok{                    YEARSMARRIED}
+\StringTok{                FROM}
+\StringTok{                    peoplefile}
+\StringTok{                WHERE}
+\StringTok{                    AGE \textgreater{} YEARSMARRIED"}
+\FunctionTok{sqldf}\NormalTok{(query2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Age agegroup height  status yearsmarried
+## 1  21    adult      6  single           -1
+## 2   2    child      3 married            0
+## 3 221  elderly      5 widowed            2
+## 4  34    child     -7 married            3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rule2Voilated }\OtherTok{\textless{}{-}}\NormalTok{ totalRows }\SpecialCharTok{{-}} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{sqldf}\NormalTok{(query2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#RULE SET 3}
+\NormalTok{query3 }\OtherTok{\textless{}{-}} \StringTok{"SELECT}
+\StringTok{                  AGE,}
+\StringTok{                  AGEGROUP,}
+\StringTok{                  HEIGHT,}
+\StringTok{                  STATUS,}
+\StringTok{                  YEARSMARRIED}
+\StringTok{              FROM}
+\StringTok{                  peoplefile}
+\StringTok{              WHERE}
+\StringTok{                      STATUS=\textquotesingle{}married\textquotesingle{} OR STATUS=\textquotesingle{}single\textquotesingle{}OR STATUS=\textquotesingle{}widowed\textquotesingle{} "}
+\FunctionTok{sqldf}\NormalTok{(query3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Age agegroup height  status yearsmarried
+## 1  21    adult    6.0  single           -1
+## 2   2    child    3.0 married            0
+## 3  18    adult    5.7 married           20
+## 4 221  elderly    5.0 widowed            2
+## 5  34    child   -7.0 married            3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rule3Voilated }\OtherTok{\textless{}{-}}\NormalTok{ totalRows }\SpecialCharTok{{-}} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{sqldf}\NormalTok{(query3))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#RULE SET 4}
+\NormalTok{query4 }\OtherTok{\textless{}{-}} \StringTok{"SELECT}
+\StringTok{                AGE,}
+\StringTok{                AGEGROUP,}
+\StringTok{                HEIGHT,}
+\StringTok{                STATUS,}
+\StringTok{                YEARSMARRIED}
+\StringTok{          FROM}
+\StringTok{                peoplefile}
+\StringTok{          WHERE}
+\StringTok{                AGE \textless{} 18 AND AGEGROUP = \textquotesingle{}child\textquotesingle{} OR}
+\StringTok{                AGE BETWEEN 18 AND 65 AND AGEGROUP = \textquotesingle{}adult\textquotesingle{} OR }
+\StringTok{                AGE \textgreater{} 65 AND AGEGROUP = \textquotesingle{}elderly\textquotesingle{} "}
+\FunctionTok{sqldf}\NormalTok{(query4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Age agegroup height  status yearsmarried
+## 1  21    adult    6.0  single           -1
+## 2   2    child    3.0 married            0
+## 3  18    adult    5.7 married           20
+## 4 221  elderly    5.0 widowed            2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rule4Voilated }\OtherTok{\textless{}{-}}\NormalTok{ totalRows }\SpecialCharTok{{-}} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{sqldf}\NormalTok{(query4))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Rule Set Voilations Summary }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+    \StringTok{"RuleSet 1 :"}\NormalTok{,rule1Voilated,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+    \StringTok{"RuleSet 2 :"}\NormalTok{,rule2Voilated,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+    \StringTok{"RuleSet 3 :"}\NormalTok{,rule3Voilated,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}
+    \StringTok{"RuleSet 4 :"}\NormalTok{,rule4Voilated,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rule Set Voilations Summary 
+##  RuleSet 1 : 1 
+##  RuleSet 2 : 1 
+##  RuleSet 3 : 0 
+##  RuleSet 4 : 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{totalVoilations }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(}\FunctionTok{c}\NormalTok{(rule1Voilated,rule2Voilated,rule3Voilated,rule4Voilated))}
+\FunctionTok{plot}\NormalTok{(totalVoilations,}\AttributeTok{xlab =} \StringTok{"Rule"}\NormalTok{,}\AttributeTok{ylab =} \StringTok{"Number of Times Violated"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practicals_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(totalVoilations,}\AttributeTok{xlab=}\StringTok{"Rules"}\NormalTok{,}\AttributeTok{ylab =} \StringTok{"Number of Times Violated"}\NormalTok{,}\AttributeTok{names.arg =} \FunctionTok{c}\NormalTok{(}\StringTok{"Rule1"}\NormalTok{,}\StringTok{"Rule 2"}\NormalTok{,}\StringTok{"Rule 3"}\NormalTok{,}\StringTok{"Rule 4"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practicals_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+\end{document}

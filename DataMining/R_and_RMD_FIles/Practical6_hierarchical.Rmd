@@ -1,0 +1,52 @@
+---
+title: "Practical 6 - Hierarchical"
+output: html_notebook
+---
+
+```{r}
+head(iris)
+```
+
+```{r}
+summary(iris)
+```
+
+### Taking 30 Observation from iris Data Set
+```{r}
+sampleID <- sample(1:dim(iris)[1],50)
+sampleID
+```
+
+### Creating a Sample Data Set (Subset) of Iris Data Set
+```{r}
+irisSubset <- iris[sampleID,]
+head(irisSubset)
+```
+
+```{r}
+irisSubset$Species <- NULL
+head(irisSubset)
+```
+
+### Dendogram with Single, Complete and Average Cluster Proximity with Proximity Matrix having Euclidean Distances 
+
+```{r}
+hc <- hclust(dist(irisSubset,method="euclidean"), method="average")
+plot(hc, hang = -1, labels=iris$Species[sampleID])
+rect.hclust(hc, k=3,border=2:6)
+```
+
+
+```{r}
+hc <- hclust(dist(irisSubset,method="euclidean"), method="single")
+plot(hc, hang = -1, labels=iris$Species[sampleID])
+rect.hclust(hc, k=3,border=2:6)
+```
+
+
+```{r}
+hc <- hclust(dist(irisSubset,method="euclidean"), method="complete")
+plot(hc, hang = -1, labels=iris$Species[sampleID])
+rect.hclust(hc, k=3,border=2:6)
+```
+

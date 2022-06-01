@@ -1,0 +1,134 @@
+---
+title: "Practical 5 - KNN"
+output: html_notebook
+---
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caret)
+library(e1071)
+library(ggplot2)
+```
+
+```{r}
+head(iris)
+```
+
+## 75-25 Split
+
+### Getting the train index
+```{r}
+trainIndex <- createDataPartition(iris$Species,p=0.75,list=FALSE)
+```
+
+### Training Data
+```{r}
+irisTrain <- iris[trainIndex,]
+head(irisTrain)
+```
+### TestData
+```{r}
+irisTest <- iris[-trainIndex,]
+head(irisTest)
+```
+
+```{r}
+knnModel <- knn(scale(irisTrain[,1:4]),scale(irisTest[,1:4]),irisTrain$Species,k=13)
+```
+
+```{r}
+knnModel
+```
+
+```{r}
+plot(knnModel)
+```
+
+```{r}
+cm <- confusionMatrix(irisTest$Species,knnModel)
+cm$table
+```
+
+### Model Accuracy
+
+```{r}
+mean(knnModel !=irisTest$Species)
+accuracy <- c()
+kValue <- 1:10
+for(k in 1:10)
+{
+  model <- knn(scale(irisTrain[,1:4]),scale(irisTest[,1:4]),irisTrain$Species,k=k)
+  accuracy[k] <- 1 - mean(model !=irisTest$Species)
+}
+kAcc <- data.frame(
+  K = kValue,
+  A = accuracy
+)
+plot(x=kValue,y=accuracy,type="l")
+```
+
+```{r}
+kAcc
+ggplot(kAcc,aes(x=K,y=A)) + geom_line(data = kAcc, colour = 'red',linetype=2)
+```
+
+### CV
+
+```{r}
+
+model <- train(Species~.,iris,method="knn",trControl = trainControl(method = "cv", number=10))
+model
+```
+
+```{r}
+ggplot(model)
+```
+
+```{r}
+predictions <- predict(model,iris)
+predictions
+```
+```{r}
+cm <- confusionMatrix(predictions,iris$Species)
+cm
+```
+```{r}
+iriSMelt <- melt(cm$table)
+```
+
+```{r}
+ggploMel
+```
+
+```{r}
+model <- train(Species~.,iris,method="knn",trControl=trainControl(method = "boot",number =20))
+#model <- train(Species~.,iris,method="knn",trControl=trainControl(method = "cv", number=10))
+
+model
+```
+
+```{r}
+ggplot(model)
+```
+```{r}
+predictions <- predict(model,iris)
+predictions
+```
+
+```{r}
+cm <- confusionMatrix(predictions,iris$Species)
+cm
+```
+```{r}
+irisMelt <- melt(cm$table)
+ggplot(irisMelt, aes(x = Prediction,
+                     y = Reference,
+                     fill = value)) + geom_tile()
+```
+
+```{r}
+accuracy <- sum(diag(cm$table))/sum(cm$table)*100
+accuracy
+```
+

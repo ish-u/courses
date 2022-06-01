@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation</title>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1 style="padding:5px;margin:20px;">
+      <u>
+        DOM Manipulation
+      </u>
+    </h1>
+
+    <div class="container">
+      <h2>getElementById and innerHTML Demo</h2>
+      <ul>
+        <li onclick="changeText(this)">
+          Sentence One </em>
+        </li>
+        <li onclick="changeText(this)">
+          Sentence Two </em>
+        </li>
+        <li onclick="changeText(this)">
+          Sentence Three </em>
+        </li>
+      </ul>
+      Setting this Element's <b>innerHTML</b> by any List Element's Text in the
+      above Un-Ordered List on clicking any element -
+      "<span id="sentence"></span>"
+    </div>
+
+
+    <div class="container" id="node-methods">
+      <h2>Node Methods Demo</h2>
+      <form onsubmit="addToList(event)">
+        <input type="text" placeholder="Add Something" id="to-add">
+        <button type="submit">Add</button>
+      </form>
+      <ul id="list"></ul>
+      <b>
+        Actions :-
+      </b>
+      <ul>
+        <li><button onclick="getFirstChild()">Get First Child</button></li>
+        <li><button onclick="getLastChild()">Get Last Child</button></li>
+        <li><button onclick="getParentNode()">Get Parent Node</button></li>
+        <li><button onclick="removeFirst()"> Remove First Child </button></li>
+        <li><button onclick="getChildNodes()">Get Child Nodes </button></li>
+        <li>Click On Element to get Next Sibling</li>
+        <li>Double-Click On Element to get Previous Sibling</li>
+      </ul>
+      <em>(add something in list for some action</em>)<br> <br>
+      <b>
+        Output :-
+      </b>
+      
+      <span id="action"></span>
+    </div>
+
+
+    <div class="container">
+      <h2>Attribute Demo</h2>
+      Get Attributes of the element below <br><br>
+      <span class="some-special-class" id="id-of-this-element" style="font-weight:1000; margin:25px">
+        A Span Element
+      </span>
+      <button onclick="displayAttr()">Display Attributes</button>
+      <br>
+      <br>
+      <span id="display-attributes">
+      </span>
+      <br>
+      Change Color of all 'li' tags
+      <ul>
+        <li><button onclick="changeColor('red')">Red</button></li>
+        <li><button onclick="changeColor('blue')">Blue</button></li>
+        <li><button onclick="changeColor('green')">Green</button></li>
+      </ul>
+    </div>
+  </body>
+</html>

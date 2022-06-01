@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./client.js"></script>
+  </head>
+  <body>
+    <!-- Sign In Form -->
+    <div id="signin-form">
+      <h1>Sign In</h1>
+      <form method="post">
+        <div class="form-input">
+          <input type="text" name="username" placeholder="@user" required />
+        </div>
+        <div class="form-input">
+          <input type="text" name="password" placeholder="******" required />
+        </div>
+        <div class="form-input">
+          <button type="submit">sign in</button>
+          <span
+            href=""
+            style="float: right"
+            onclick="document.getElementById('signup-form').style.display = 'flex';document.getElementById('signin-form').style.display = 'none'"
+            >sign up</span
+          >
+        </div>
+      </form>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signup-form" style="display: none">
+      <h1>Sign Up</h1>
+      <form method="post">
+        <div class="form-input">
+          <input type="text" name="name" placeholder="Enter Name" required />
+        </div>
+        <div class="form-input">
+          <input type="email" name="email" placeholder="Enter Email" required />
+        </div>
+        <div class="form-input">
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+            required
+          />
+        </div>
+        <div class="form-input">
+          <input
+            type="password"
+            name="password"
+            placeholder="******"
+            required
+          />
+        </div>
+        <div class="form-input">
+          <button type="submit">sign up</button>
+          <span
+            href=""
+            style="float: right"
+            onclick="document.getElementById('signin-form').style.display = 'flex';document.getElementById('signup-form').style.display = 'none'"
+            >sign in</span
+          >
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

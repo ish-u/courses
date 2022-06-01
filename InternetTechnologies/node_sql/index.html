@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li><a href="">a</a></li>
+      <li><a href="">b</a></li>
+      <li><a href="">c</a></li>
+      <li><a href="">d</a></li>
+    </ul>
+
+    <form id="form">
+      <input type="text" name="username" id="username" placeholder="Username" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+      <input type="submit" value="submit" id="submit" />
+    </form>
+
+    <code lang="JSON"> </code>
+    <br />
+    <button id="shuffle">Shuffle</button>
+
+    <br />
+    <br />
+    <form id="form2" action="">
+      <label for="fname">First Name</label>
+      <input type="text" name="fname" id="fname" />
+      <br />
+      <label for="lname">Last Name</label>
+      <input type="text" name="lname" id="lname" />
+      <br />
+      <label for="gender"></label>
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="none">Don't Wish to Answer</option></select
+      ><br />
+      <textarea
+        name="about"
+        id="about"
+        cols="30"
+        rows="10"
+        placeholder="about"
+      ></textarea
+      ><br />
+      <label for="age1">18-21</label>
+      <input type="radio" name="age" id="age1" value="18" />
+      <label for="age3">24-30</label>
+      <input type="radio" name="age" id="age2" value="24" />
+      <label for="age2">21-24</label>
+      <input type="radio" name="age" id="age3" value="30" />
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </form>
+    <br />
+    <!-- AJAX and JSON -->
+    <script src="./ajax.js"></script>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./j.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    th {
+      background-color: lightgrey;
+    }
+    th,
+    td {
+      padding: 5px;
+    }
+  </style>
+  <body>
+    <h1>Customer Service Servey</h1>
+    <h4>Please Take a moment to fill out this form</h4>
+    <br />
+    <hr />
+    <br />
+    <form>
+      <table border="1" style="border-collapse: collapse; text-align: center">
+        <tr>
+          <td
+            style="border-top: 1px solid white; border-left: 1px solid white"
+          ></td>
+          <th>Very Satisfied</th>
+          <th>Satisfied</th>
+          <th>Neutral</th>
+          <th>Unsatisfied</th>
+          <th>Unsatisfied</th>
+          <th>Very Unsatisfied</th>
+        </tr>
+        <tr>
+          <th>Friendliness</th>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+          <td><input type="radio" name="friendliness" value="1" /></td>
+        </tr>
+        <tr>
+          <th>Quickness</th>
+          <td><input type="radio" name="Quickness" value="1" /></td>
+          <td><input type="radio" name="Quickness" value="2" /></td>
+          <td><input type="radio" name="Quickness" value="3" /></td>
+          <td><input type="radio" name="Quickness" value="4" /></td>
+          <td><input type="radio" name="Quickness" value="5" /></td>
+          <td><input type="radio" name="Quickness" value="6" /></td>
+        </tr>
+        <tr>
+          <th>knowledge</th>
+          <td><input type="radio" name="Knowledge" value="1" /></td>
+          <td><input type="radio" name="Knowledge" value="2" /></td>
+          <td><input type="radio" name="Knowledge" value="3" /></td>
+          <td><input type="radio" name="Knowledge" value="4" /></td>
+          <td><input type="radio" name="Knowledge" value="5" /></td>
+          <td><input type="radio" name="Knowledge" value="6" /></td>
+        </tr>
+      </table>
+
+      <br />
+      <br />
+
+      <span><b>Would you use our service in future ?</b></span>
+      <br />
+      <input type="radio" id="yes" name="future" />
+      <label for="yes">Yes</label><br />
+      <input type="radio" id="no" name="future" />
+      <label for="no">No</label> <br />
+      <input type="radio" id="maybe" name="future" />
+      <label for="maybe">Maybe</label><br />
+      <hr />
+
+      <span><b>How can we improve our service ?</b></span>
+      <br />
+      <br />
+      <textarea
+        name=""
+        placeholder="Type Here..."
+        id=""
+        cols="70"
+        rows="5"
+      ></textarea>
+      <br />
+      <br />
+      <button
+        onclick="event.preventDefault(); console.log(document.getElementsByName('Quickness'))"
+        type="submit"
+        style="padding: 10px; margin-left: 25%"
+      >
+        Submit Survey
+      </button>
+    </form>
+  </body>
+</html> -->

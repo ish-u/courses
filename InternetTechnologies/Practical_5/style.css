@@ -1,0 +1,19 @@
+#paragraph{
+    width: 50vw;
+    margin: 0px auto;
+    padding: 50px;
+    font-size: large;
+}
+
+.button-grid{
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-rows: 50px 50px 50px;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.button-grid button{
+    margin: 5px;
+    font-size: large;
+}

@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap");
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+  color: black;
+  font-weight: bold;
+}
+
+html {
+  height: 100%;
+  background: hsla(195, 86%, 64%, 0.5);
+}
+button {
+  border-radius: 10%;
+}
+#add-todo-form {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+#add-todo-form input {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#add-todo-form button {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  color: white;
+  font-size: large;
+  background-color: blueviolet;
+  border: none;
+}
+
+#todo-list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#todo-list {
+  list-style-type: none;
+}
+.todo-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  height: 10vh;
+}
+.todo-item span {
+  width: 25vw;
+  font-size: large;
+}
+
+.todo-item button {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  border: none;
+}
+
+.edit-button {
+  width: 75px;
+  color: white;
+  background-color: white;
+  background-color: rgba(65, 105, 225, 0.75);
+}
+
+.edit-button:hover {
+  background-color: rgba(65, 105, 225);
+}
+
+.delete-button {
+  width: 25px;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.delete-button:hover {
+  background-color: red;
+}

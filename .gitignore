@@ -1,10 +1,11 @@
 *.pdf
 *.docx
-.vscode/
+# .vscode/
 *.class
 *.exe
 OS_Practical/
 *.txt
+node_modules/
 
 # Gradle files
 .gradle/

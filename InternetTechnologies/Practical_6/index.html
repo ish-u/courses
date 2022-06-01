@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
+    <title>Pet Form</title>
+  </head>
+  <body>
+    <h1 style="margin: 20px auto; width: 30vw">Pet Form</h1>
+    <form id="form" onsubmit="event.preventDefault(); logData(event)">
+      <!-- name -->
+      <label for="pet_name">Pet's Name:</label>
+      <input
+        type="text"
+        name="pet_name"
+        id="pet_name"
+        placeholder="Eg: Dogg."
+        required
+      />
+
+      <!-- age -->
+      <label for="pet_age">Pet's Age</label>
+      <input
+        type="number"
+        name="pet_age"
+        id="pet_age"
+        placeholder="Eg: 2yrs"
+        required
+      />
+
+      <!-- weight -->
+      <label for="pet_weight">Pet's Weight:</label>
+      <input
+        type="number"
+        name="pet_weight"
+        id="pet_weight"
+        placeholder="Eg: 10kg"
+        required
+      />
+
+      <!-- type -->
+      <label for="pet_type">Pet Type</label>
+      <input
+        type="text"
+        name="pet_type"
+        id="pet_type"
+        placeholder="Type Of Pet"
+        required
+      />
+
+      <!-- likes -->
+      <label for="pet_likes">Pet's Likes</label>
+      <input
+        type="text"
+        name="pet_likes"
+        id="pet_likes"
+        placeholder="Something that the Pet Like"
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
